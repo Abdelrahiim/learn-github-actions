@@ -19,8 +19,7 @@ jobs:
           node-version: 18
       
       - name: Install PNPM
-        run: curl -fsSL https://get.pnpm.io/install.sh | sh -
-          export PATH=$HOME/.local/share/pnpm:$PATH
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
