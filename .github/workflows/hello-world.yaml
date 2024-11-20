@@ -1,4 +1,4 @@
-name: hello-world
+name: Node js Ci Workflow with pnpm
 
 on:
   push:
