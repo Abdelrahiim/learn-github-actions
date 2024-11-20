@@ -12,14 +12,13 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          package-manager: pnpm
           cache-path: ~/project/node_modules
-          override-ci-command: pnpm install
+          override-ci-command: npm install
       - run:
-          command: pnpm install jest-junit
+          command: npm install jest-junit
       - run:
           name: Run tests
-          command: pnpm run test --ci --runInBand --reporters=default --reporters=jest-junit
+          command: npm run test --ci --runInBand --reporters=default --reporters=jest-junit
       - store_test_results:
           path: ./test-results/
   build-node:
@@ -28,11 +27,10 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          package-manager: pnpm
           cache-path: ~/project/node_modules
-          override-ci-command: pnpm install
+          override-ci-command: npm install
       - run:
-          command: pnpm run build
+          command: npm run build
       - run:
           name: Create the ~/artifacts directory if it doesn't exist
           command: mkdir -p ~/artifacts
@@ -43,6 +41,18 @@ jobs:
       - store_artifacts:
           path: ~/artifacts
           destination: node-build
+  deploy:
+    # This is an example deploy job, not actually used by the workflow
+    docker:
+      - image: cimg/base:stable
+    steps:
+      # Replace this with steps to deploy to users
+      - run:
+          name: deploy
+          command: '#e.g. ./deploy.sh'
+      - run:
+          name: found github actions config
+          command: ':'
 workflows:
   build-and-test:
     jobs:
