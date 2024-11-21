@@ -1,4 +1,4 @@
-import { generateHash } from "../server";
+import { generateHash } from "../utils/hashing";
 
 
 describe("generateHash", () => {
