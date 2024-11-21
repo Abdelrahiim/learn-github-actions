@@ -50,7 +50,7 @@ nano .env
 ```text
 # Example .env configuration:
 NODE_ENV=development
-PORT=3000
+PORT=5000
 API_KEY=your_api_key
 ```
 ### 3️⃣ Running the Project
