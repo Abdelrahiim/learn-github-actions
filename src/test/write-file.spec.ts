@@ -1,6 +1,6 @@
-import { writeDataToFile, type Person } from "../server"
-
 import fs from "fs";
+import { writeDataToFile } from "../utils/hashing";
+import type { Person } from "../types/Person";
 
 // Mock fs module with jest
 jest.mock("fs")

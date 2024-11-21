@@ -1,27 +1,19 @@
-import crypto from 'crypto';
-import fs from "fs";
+import http from "http";
 
-export type Person = {
-  id: string;
-  name: string
-  age: number
-  languages: Array<string>
-  address: {
-    street: string;
-    city: string;
-    state: string
-  }
+function main() {
+  const server = http.createServer();
+
+  server.on("request", (req, res) => {
+    const { method, url } = req;
+    console.log(`${method} ${url}`);
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/plain");
+    res.end("hello world");
+  });
+
+  server.listen(3000, () => {
+    console.log("🚀 ~ Server is listening on port 3000");
+  });
 }
 
-
-export function generateHash(input: string) {
-  if (!input) {
-    throw new Error('input is required');
-  }
-  return crypto.createHash('sha256').update(input).digest('hex');
-}
-
-export function writeDataToFile(path: string, data: Person) {
-  fs.writeFileSync("./person.json", JSON.stringify(data, null, 2))
-}
-
+main();
